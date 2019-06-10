@@ -1,3 +1,5 @@
+'use strict';
+
 var CLOUD_WIDTH = 420;
 var CLOUD_HEIGHT = 270;
 var CLOUD_X = 100;
@@ -31,7 +33,7 @@ window.renderStatistics = function (ctx, names, times) {
   placeCloud(ctx, CLOUD_X, CLOUD_Y, '#ffffff');
 
   var maxTime = getMaxElement(times);
-  ctx.fillStyle = '#000';ctx.font = '16px "PT Mono"';
+  ctx.fillStyle = '#000'; ctx.font = '16px "PT Mono"';
   ctx.fillText('Ура вы победили!', 140, 40);
   ctx.fillText('Список результатов:', 140, 60);
 
