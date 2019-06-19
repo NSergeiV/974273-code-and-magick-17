@@ -14,26 +14,34 @@ var randomCase = function (input) {
   return input[Math.floor(Math.random() * (input.length - 0))];
 };
 
-for (var i = 0; i < 4; i++) {
-  wizards[i] = {
-    name: randomCase(firstName) + ' ' + randomCase(lastName),
-    coatColor: randomCase(colorMantle),
-    eyesColor: randomCase(colorEye)
-  };
-}
+var fillWizards = function () {
+  for (var i = 0; i < 4; i++) {
+    wizards[i] = {
+      name: randomCase(firstName) + ' ' + randomCase(lastName),
+      coatColor: randomCase(colorMantle),
+      eyesColor: randomCase(colorEye)
+    };
+  }
+};
 
-var similarListElement = document.querySelector('.setup-similar-list');
-var fragment = document.createDocumentFragment();
-var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
+fillWizards();
 
-for (var j = 0; j < wizards.length; j++) {
-  var wizardElement = similarWizardTemplate.cloneNode(true);
+var creatingCopies = function () {
+  var similarListElement = document.querySelector('.setup-similar-list');
+  var fragment = document.createDocumentFragment();
+  var similarWizardTemplate = document.querySelector('#similar-wizard-template').content.querySelector('.setup-similar-item');
 
-  wizardElement.querySelector('.setup-similar-label').textContent = wizards[j].name;
-  wizardElement.querySelector('.wizard-coat').style.fill = wizards[j].coatColor;
-  wizardElement.querySelector('.wizard-eyes').style.fill = wizards[j].eyesColor;
+  for (var j = 0; j < wizards.length; j++) {
+    var wizardElement = similarWizardTemplate.cloneNode(true);
 
-  fragment.appendChild(wizardElement);
-}
+    wizardElement.querySelector('.setup-similar-label').textContent = wizards[j].name;
+    wizardElement.querySelector('.wizard-coat').style.fill = wizards[j].coatColor;
+    wizardElement.querySelector('.wizard-eyes').style.fill = wizards[j].eyesColor;
 
-similarListElement.appendChild(fragment);
+    fragment.appendChild(wizardElement);
+  }
+
+  similarListElement.appendChild(fragment);
+};
+
+creatingCopies();
